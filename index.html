@@ -105,21 +105,13 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
 .svc h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
 .svc p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
 
-/* ---------- BEFORE / AFTER ---------- */
-.ba-wrap{max-width:860px;margin:42px auto 0}
-.ba{position:relative;aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);user-select:none;touch-action:pan-y}
-.ba-after,.ba-before{position:absolute;inset:0;background-size:cover;background-position:center;display:flex;align-items:flex-end}
-.ba-before{clip-path:inset(0 50% 0 0)}
-.ba-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--muted)}
-.ba-before .ba-slot{background:var(--stone-2)}
-.ba-after .ba-slot{background:#ded3c6}
-.ba-slot .glyph{width:46px;height:32px;color:var(--wine);opacity:.45}
-.ba-tag{position:absolute;bottom:14px;padding:6px 13px;border-radius:7px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:#fff;background:rgba(23,18,15,.78);z-index:4}
-.ba-tag.b{left:14px}.ba-tag.a{right:14px}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);z-index:5;cursor:ew-resize}
-.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:var(--wine);z-index:6}
-.ba-knob svg{width:24px;height:24px}
-.ba-note{text-align:center;color:var(--muted);font-size:13px;margin-top:14px;font-family:'Barlow',sans-serif}
+/* ---------- BEFORE / AFTER VIDEO ---------- */
+.ba-wrap{max-width:900px;margin:42px auto 0}
+.ba-video{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#000;aspect-ratio:4/3}
+.ba-video video{width:100%;height:100%;display:block;object-fit:cover}
+.ba-meta{margin:24px auto 0;max-width:640px;text-align:center}
+.ba-meta h3{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(20px,3vw,27px);color:var(--ink);margin:0 0 9px;letter-spacing:.01em}
+.ba-meta p{color:var(--muted);font-size:15px;line-height:1.6;margin:0;font-family:'Barlow',sans-serif}
 
 /* ---------- GALLERY ---------- */
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px}
@@ -361,16 +353,16 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
   <div class="wrap center">
     <span class="eyebrow"><svg class="glyph" viewBox="0 0 26 18"><rect x="0" y="0" width="11" height="8"/><rect x="14" y="0" width="11" height="8"/><rect x="0" y="11" width="11" height="7"/><rect x="14" y="11" width="11" height="7"/></svg> The transformation</span>
     <h2 class="title">Before and After</h2>
-    <p class="lead">Drag the slider to see the difference. Real driveway transformations from across our patch.</p>
+    <p class="lead">Watch a tired old driveway become a clean, hard-wearing finish. Real transformations from across our patch.</p>
   </div>
   <div class="ba-wrap">
-    <div class="ba" id="ba">
-      <div class="ba-after"  data-bg="baAfter"><div class="ba-slot"><svg class="glyph" viewBox="0 0 26 18"><rect x="0" y="0" width="11" height="8"/><rect x="14" y="0" width="11" height="8"/><rect x="0" y="11" width="11" height="7"/><rect x="14" y="11" width="11" height="7"/></svg></div></div>
-      <div class="ba-before" data-bg="baBefore" id="baBefore"><div class="ba-slot"><svg class="glyph" viewBox="0 0 26 18"><rect x="0" y="0" width="11" height="8"/><rect x="14" y="0" width="11" height="8"/><rect x="0" y="11" width="11" height="7"/><rect x="14" y="11" width="11" height="7"/></svg></div></div>
-      <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-      <div class="ba-handle" id="baHandle"><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-4 6 4 6M15 6l4 6-4 6"/></svg></div></div>
+    <div class="ba-video">
+      <video id="baVideo" src="b-a-01.mp4" poster="b-a-01-poster.jpg" muted loop playsinline preload="metadata"></video>
     </div>
-    <p class="ba-note">Before and after pairs to be added once your project photos are in.</p>
+    <div class="ba-meta">
+      <h3>Resin-Bound Driveway Transformation</h3>
+      <p>An aged, weathered drive stripped back and finished in a smooth resin-bound surface — UV-stable, weed-free and built to last, completed start to finish by the Stoneway team.</p>
+    </div>
   </div>
 </section>
 
@@ -587,16 +579,17 @@ slides.forEach((_,i)=>{const b=document.createElement('button');if(i===0)b.class
 function go(i){slides[hi].classList.remove('active');dots.children[hi].classList.remove('on');hi=i;slides[hi].classList.add('active');dots.children[hi].classList.add('on');}
 if(slides.length>1)setInterval(()=>go((hi+1)%slides.length),5500);
 
-// before/after slider
-const ba=document.getElementById('ba'),baBefore=document.getElementById('baBefore'),baHandle=document.getElementById('baHandle');
-let drag=false;
-function setBA(x){const r=ba.getBoundingClientRect();let p=(x-r.left)/r.width;p=Math.max(0,Math.min(1,p));baBefore.style.clipPath=`inset(0 ${100-p*100}% 0 0)`;baHandle.style.left=p*100+'%';}
-baHandle.addEventListener('mousedown',()=>drag=true);
-addEventListener('mouseup',()=>drag=false);
-addEventListener('mousemove',e=>{if(drag)setBA(e.clientX);});
-baHandle.addEventListener('touchstart',()=>drag=true,{passive:true});
-addEventListener('touchend',()=>drag=false);
-ba.addEventListener('touchmove',e=>{if(drag)setBA(e.touches[0].clientX);},{passive:true});
+// before/after video — autoplay on scroll into view, pause when out
+const baVideo=document.getElementById('baVideo');
+if(baVideo){
+  const baObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){baVideo.play().catch(()=>{});}
+      else{baVideo.pause();}
+    });
+  },{threshold:.4});
+  baObs.observe(baVideo);
+}
 
 // reviews (placeholder Google-style cards)
 const REVIEWS=[
