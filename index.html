@@ -106,12 +106,14 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
 .svc p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
 
 /* ---------- BEFORE / AFTER VIDEO ---------- */
-.ba-wrap{max-width:900px;margin:42px auto 0}
+.ba-wrap{max-width:1040px;margin:42px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.ba-card{display:flex;flex-direction:column}
 .ba-video{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#000;aspect-ratio:4/3}
 .ba-video video{width:100%;height:100%;display:block;object-fit:cover}
-.ba-meta{margin:24px auto 0;max-width:640px;text-align:center}
-.ba-meta h3{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(20px,3vw,27px);color:var(--ink);margin:0 0 9px;letter-spacing:.01em}
+.ba-meta{margin:22px auto 0;max-width:480px;text-align:center}
+.ba-meta h3{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(19px,2.4vw,24px);color:var(--ink);margin:0 0 9px;letter-spacing:.01em}
 .ba-meta p{color:var(--muted);font-size:15px;line-height:1.6;margin:0;font-family:'Barlow',sans-serif}
+@media (max-width:760px){.ba-wrap{grid-template-columns:1fr;gap:40px}}
 
 /* ---------- GALLERY ---------- */
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px}
@@ -356,12 +358,23 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
     <p class="lead">Watch a tired old driveway become a clean, hard-wearing finish. Real transformations from across our patch.</p>
   </div>
   <div class="ba-wrap">
-    <div class="ba-video">
-      <video id="baVideo" src="b-a-01.mp4" poster="b-a-01-poster.jpg" muted loop playsinline preload="metadata"></video>
+    <div class="ba-card">
+      <div class="ba-video">
+        <video class="baVideo" src="b-a-01.mp4" poster="b-a-01-poster.jpg" muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="ba-meta">
+        <h3>Resin-Bound Driveway Transformation</h3>
+        <p>An aged, weathered drive stripped back and finished in a smooth resin-bound surface — UV-stable, weed-free and built to last, completed start to finish by the Stoneway team.</p>
+      </div>
     </div>
-    <div class="ba-meta">
-      <h3>Resin-Bound Driveway Transformation</h3>
-      <p>An aged, weathered drive stripped back and finished in a smooth resin-bound surface — UV-stable, weed-free and built to last, completed start to finish by the Stoneway team.</p>
+    <div class="ba-card">
+      <div class="ba-video">
+        <video class="baVideo" src="b-a-02.mp4" poster="b-a-02-poster.jpg" muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="ba-meta">
+        <h3>Block Paving Driveway Makeover</h3>
+        <p>A worn, uneven surface lifted and relaid with crisp new block paving — a clean, durable finish that lifts the whole front of the property, laid and pointed by the Stoneway team.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -579,16 +592,16 @@ slides.forEach((_,i)=>{const b=document.createElement('button');if(i===0)b.class
 function go(i){slides[hi].classList.remove('active');dots.children[hi].classList.remove('on');hi=i;slides[hi].classList.add('active');dots.children[hi].classList.add('on');}
 if(slides.length>1)setInterval(()=>go((hi+1)%slides.length),5500);
 
-// before/after video — autoplay on scroll into view, pause when out
-const baVideo=document.getElementById('baVideo');
-if(baVideo){
+// before/after videos — autoplay on scroll into view, pause when out
+const baVideos=document.querySelectorAll('.baVideo');
+if(baVideos.length){
   const baObs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){baVideo.play().catch(()=>{});}
-      else{baVideo.pause();}
+      if(e.isIntersecting){e.target.play().catch(()=>{});}
+      else{e.target.pause();}
     });
   },{threshold:.4});
-  baObs.observe(baVideo);
+  baVideos.forEach(v=>baObs.observe(v));
 }
 
 // reviews (placeholder Google-style cards)
