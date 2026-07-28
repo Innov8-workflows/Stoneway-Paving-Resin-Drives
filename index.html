@@ -245,8 +245,10 @@ a.area:hover{border-color:var(--wine);color:var(--wine);transform:translateY(-2p
 .footer h4{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;color:#fff;text-transform:uppercase;font-size:16px;letter-spacing:.05em;margin:0 0 16px}
 .footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .footer ul a:hover{color:#fff}
-.foot-areas{columns:2;column-gap:18px}
-.foot-areas li{margin-bottom:9px}
+/* grid, not `columns` — .footer ul is display:flex, which ignores multi-column.
+   Needs `.footer ul.foot-areas` to out-specify the `.footer ul` flex rule. */
+.footer ul.foot-areas{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}
+.foot-areas li{margin-bottom:0}
 .foot-contact a{color:rgba(255,255,255,.66)}
 .foot-contact a:hover{color:var(--wine-bright)}
 .foot-social{display:flex;gap:10px;margin-top:14px}
@@ -284,14 +286,70 @@ a.area:hover{border-color:var(--wine);color:var(--wine);transform:translateY(-2p
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
 @media(max-width:560px){
-  .section{padding:60px 0}
-  .svc{padding:20px 16px}
-  .svc h3{font-size:18px;overflow-wrap:break-word}
+  .section{padding:44px 0}
+  /* hero: was 210px of padding + a 180px logo, pushing it past a full screen */
+  .hero{min-height:86svh}
+  .hero-content{padding:96px 22px 60px}
+  .hero-plate{padding:9px;border-radius:14px;margin-bottom:18px}
+  .hero-plate img{width:124px}
+  .hero p.sub{margin-top:14px}
+  .hero-areas{margin-top:14px}
+  .hero-cta{margin-top:22px;gap:10px}
+  /* dots are 9-10px visually; widen the hit area to ~24px without resizing the dot */
+  .hero-dots{gap:14px}
+  .rev-dots{gap:14px}
+  .hero-dots button,.rev-dots button{position:relative}
+  .hero-dots button::after,.rev-dots button::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%}
+  h2.title{font-size:clamp(26px,7.4vw,34px);margin-top:10px}
+  .lead{font-size:15.5px;margin-top:10px}
+  .eyebrow{font-size:12px}
+  /* services */
+  .svc-grid{gap:12px;margin-top:26px}
+  .svc{padding:16px 14px}
+  .svc h3{font-size:17px;overflow-wrap:break-word}
   .svc p{font-size:13px}
-  .why-list{grid-template-columns:1fr}
+  /* before / after */
+  .ba-wrap{gap:34px;margin-top:26px;padding:0 18px}
+  .ba-row{gap:18px}
+  .ba-copy h3{font-size:23px;margin-bottom:10px}
+  .ba-copy p{font-size:14.5px;line-height:1.55}
+  .ba-loc{margin-top:14px}
+  /* gallery */
+  .gal{gap:10px;margin-top:26px}
+  /* about: 4/5 portrait is 414px tall on a phone */
+  .about-media img{aspect-ratio:4/3}
+  /* why */
+  .why-list{grid-template-columns:1fr;gap:16px}
+  /* reviews */
+  .rev-platforms{margin-top:20px;gap:10px}
+  .rev-stage{margin-top:24px}
+  .rev-nav{margin-top:18px}
+  /* areas */
+  .areas-grid{gap:8px;margin-top:26px}
+  .area{padding:11px 12px}
+  .areas-note{margin-top:16px}
+  /* contact */
+  .form{padding:20px}
   .form .row{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .foot-areas{columns:2}
+  .field{margin-bottom:11px}
+  .contact-info .ci{margin-bottom:16px}
+  /* 16px minimum, or iOS Safari zooms the page in on focus */
+  .field input,.field select,.field textarea{font-size:16px}
+  /* tap targets */
+  .nav-call{min-height:44px;padding:11px 14px}
+  .contact-info .ci a,.footer ul a,.foot-contact a{display:inline-block;padding:3px 0}
+  .brand span{font-size:11.5px;letter-spacing:.2em}
+  /* trust + footer */
+  .trust{padding:26px 0}
+  .accred{margin-top:22px;padding-top:20px;gap:12px}
+  /* 2-up link columns instead of one long stack */
+  .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .foot-brand{grid-column:1/-1}
+  .foot-brand img{height:70px;margin-bottom:12px}
+  .footer h4{font-size:15px;margin-bottom:12px}
+  .footer ul{gap:8px}
+  .footer ul.foot-areas{grid-template-columns:1fr;gap:8px}
+  .foot-accred{margin-top:30px;padding:20px 0;gap:12px}
   .hero-cta .btn{flex:1}
 }
 @media (prefers-reduced-motion: reduce){
