@@ -195,6 +195,16 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
 .owner span{font-size:13px;color:var(--muted)}
 
 /* ---------- CONTACT ---------- */
+/* ---------- AREAS ---------- */
+.areas{background:var(--stone-2)}
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:42px}
+.area{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-family:'Barlow',sans-serif;font-size:15px;font-weight:600;color:var(--text);text-decoration:none;transition:.2s}
+a.area:hover{border-color:var(--wine);color:var(--wine);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(23,18,15,.55)}
+.area svg{width:17px;height:17px;flex:none;fill:none;stroke:var(--wine);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.area.plain{background:transparent;color:var(--muted);border-style:dashed}
+.area.plain svg{stroke:var(--muted)}
+.areas-note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:24px;font-family:'Barlow',sans-serif}
+@media (max-width:520px){.areas-grid{grid-template-columns:1fr 1fr;gap:10px}.area{padding:12px 13px;font-size:14px;gap:8px}}
 .contact{background:var(--stone)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:46px}
 .contact-info .ci{display:flex;gap:15px;align-items:flex-start;margin-bottom:22px}
@@ -299,6 +309,7 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
       <a href="#gallery">Gallery</a>
       <a href="#reviews">Reviews</a>
       <a href="#about">About</a>
+      <a href="#areas">Areas</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="tel:+441452768943" class="nav-call">
@@ -315,6 +326,7 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
   <a href="#before-after">Before and After</a>
   <a href="#reviews">Reviews</a>
   <a href="#about">About</a>
+  <a href="#areas">Areas</a>
   <a href="#contact">Contact</a>
   <a href="tel:+441452768943" class="btn btn-primary">Call 01452 768943</a>
 </aside>
@@ -518,6 +530,37 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
         <div><b>James</b><span>Founder, Stoneway Paving and Resin Driveways Ltd</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="section areas" id="areas">
+  <div class="wrap center">
+    <span class="eyebrow"><svg class="glyph" viewBox="0 0 26 18"><rect x="0" y="0" width="11" height="8"/><rect x="14" y="0" width="11" height="8"/><rect x="0" y="11" width="11" height="7"/><rect x="14" y="11" width="11" height="7"/></svg> Where we work</span>
+    <h2 class="title">Areas We Cover</h2>
+    <p class="lead">Based in Gloucestershire and working right across the South West, the Cotswolds and South Wales.</p>
+  </div>
+  <div class="wrap">
+    <div class="areas-grid">
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-abergavenny/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Abergavenny</a>
+      <a class="area" href="https://stonewaypaving.co.uk/tarmac-driveways/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Gloucester</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-cheltenham/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Cheltenham</a>
+      <span class="area plain"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Worcester</span>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-cirencester/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Cirencester</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-bristol/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Bristol</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-forestofdean/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Forest of Dean</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-swindon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Swindon</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-bath/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Bath</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-chippenham/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Chippenham</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-newport/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Newport</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-chepstow/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Chepstow</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-weston-super-mare/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Weston-super-Mare</a>
+      <a class="area" href="https://stonewaypaving.co.uk/locations/driveways-in-monmouth/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Monmouth</a>
+      <a class="area" href="https://stonewaypaving.co.uk/driveways-in-burnham-on-sea/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Burnham-on-Sea</a>
+      <span class="area plain"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Hereford</span>
+      <span class="area plain"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Shropshire</span>
+    </div>
+    <p class="areas-note">Not sure if you are in our patch? Give us a call on 01452 768943 and we will let you know.</p>
   </div>
 </section>
 
