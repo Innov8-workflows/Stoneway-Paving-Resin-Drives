@@ -105,15 +105,24 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
 .svc h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
 .svc p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
 
-/* ---------- BEFORE / AFTER VIDEO ---------- */
-.ba-wrap{max-width:1040px;margin:42px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:34px}
-.ba-card{display:flex;flex-direction:column}
-.ba-video{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#000;aspect-ratio:4/3}
-.ba-video video{width:100%;height:100%;display:block;object-fit:cover}
-.ba-meta{margin:22px auto 0;max-width:480px;text-align:center}
-.ba-meta h3{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(19px,2.4vw,24px);color:var(--ink);margin:0 0 9px;letter-spacing:.01em}
-.ba-meta p{color:var(--muted);font-size:15px;line-height:1.6;margin:0;font-family:'Barlow',sans-serif}
-@media (max-width:760px){.ba-wrap{grid-template-columns:1fr;gap:40px}}
+/* ---------- BEFORE / AFTER (zigzag) ---------- */
+.ba-wrap{max-width:1120px;margin:52px auto 0;display:flex;flex-direction:column;gap:70px;padding:0 22px;box-sizing:border-box}
+.ba-row{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.ba-row:nth-child(even) .ba-media{order:2}
+.ba-media{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 26px 60px -34px rgba(23,18,15,.75);background:#000;aspect-ratio:4/3}
+.ba-media video{width:100%;height:100%;display:block;object-fit:cover}
+.ba-badge{position:absolute;top:14px;left:14px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:rgba(23,18,15,.8);color:#fff;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:12px;padding:7px 14px;border-radius:999px}
+.ba-eyebrow{display:flex;align-items:center;gap:12px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;color:var(--wine);margin-bottom:14px}
+.ba-eyebrow::before{content:"";width:34px;height:2px;background:var(--wine);flex:none}
+.ba-copy h3{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(25px,3.4vw,36px);line-height:1.14;color:var(--ink);margin:0 0 15px}
+.ba-copy p{color:var(--muted);font-size:16px;line-height:1.68;margin:0;font-family:'Barlow',sans-serif}
+.ba-loc{display:flex;align-items:center;gap:8px;margin-top:20px;font-family:'Barlow',sans-serif;font-size:14.5px;font-weight:600;color:var(--wine)}
+.ba-loc svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:860px){
+  .ba-wrap{gap:50px}
+  .ba-row{grid-template-columns:1fr;gap:26px}
+  .ba-row:nth-child(even) .ba-media{order:0}
+}
 
 /* ---------- GALLERY ---------- */
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px}
@@ -139,23 +148,35 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
 
 /* ---------- REVIEWS ---------- */
 .reviews{background:var(--stone)}
-.rev-stage{max-width:680px;margin:42px auto 0;position:relative;overflow:hidden}
-.rev-track{display:flex;transition:transform .5s ease}
-.rev-card{min-width:100%;padding:0 8px;box-sizing:border-box}
-.rev-inner{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;box-shadow:0 14px 40px -26px rgba(23,18,15,.4)}
-.rev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.g-logo{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;gap:7px;color:#5f6368}
-.g-logo .g{font-family:'Inter';font-weight:700;font-size:19px}
-.g-logo .g i{font-style:normal}
-.stars{color:var(--gold);letter-spacing:2px;font-size:18px}
-.rev-text{font-size:15.5px;color:#3c352f;line-height:1.62;min-height:96px}
-.rev-who{display:flex;align-items:center;gap:12px;margin-top:18px}
-.rev-av{width:42px;height:42px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:19px}
-.rev-who b{font-size:15px;font-family:'Barlow',sans-serif;font-weight:600;color:#231c18}
-.rev-who span{font-size:12px;color:var(--muted);display:block}
-.rev-dots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.rev-summary{display:inline-flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 24px;margin:28px auto 0;box-shadow:0 12px 34px -26px rgba(23,18,15,.5)}
+.rev-gmark{font-family:'Inter',sans-serif;font-weight:700;font-size:31px;line-height:1;color:#4285F4;flex:none}
+.rev-score-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.rev-score{font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1;color:var(--ink)}
+.rev-sum-stars{color:var(--gold);font-size:13px;letter-spacing:2.5px;line-height:1}
+.rev-sum-meta{text-align:left;font-size:13px;color:var(--muted);line-height:1.4;font-family:'Barlow',sans-serif;border-left:1px solid var(--line);padding-left:16px}
+.rev-stage{max-width:1180px;margin:34px auto 0;position:relative;overflow:hidden;padding:6px 12px 10px;box-sizing:border-box}
+.rev-track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.rev-card{min-width:33.3333%;padding:0 10px;box-sizing:border-box;display:flex}
+.rev-inner{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 14px 40px -30px rgba(23,18,15,.5);display:flex;flex-direction:column;width:100%;box-sizing:border-box}
+.rev-head{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.rev-av{width:42px;height:42px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:19px;flex:none}
+.rev-id{flex:1;min-width:0}
+.rev-id b{display:block;font-size:15px;font-family:'Barlow',sans-serif;font-weight:600;color:#231c18;line-height:1.25}
+.rev-id span{font-size:12.5px;color:var(--muted)}
+.rev-g{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#4285F4;flex:none}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px;margin-bottom:11px}
+.rev-text{font-size:15px;color:#3c352f;line-height:1.62;flex:1;font-family:'Barlow',sans-serif}
+.rev-loc{display:flex;align-items:center;gap:7px;margin-top:16px;font-size:13.5px;color:var(--muted);font-family:'Barlow',sans-serif}
+.rev-loc svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rev-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:26px}
+.rev-arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;padding:0}
+.rev-arrow:hover{background:var(--wine);border-color:var(--wine);color:#fff}
+.rev-arrow svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rev-dots{display:flex;gap:8px;justify-content:center}
 .rev-dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(23,18,15,.2);cursor:pointer;padding:0;transition:.2s}
 .rev-dots button.on{background:var(--wine);width:24px;border-radius:5px}
+@media (max-width:980px){.rev-card{min-width:50%}}
+@media (max-width:640px){.rev-card{min-width:100%}.rev-summary{gap:12px;padding:12px 16px}.rev-sum-meta{padding-left:12px}}
 
 /* ---------- ABOUT ---------- */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
@@ -359,24 +380,33 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
     <p class="lead">Watch a tired old driveway become a clean, hard-wearing finish. Real transformations from across our patch.</p>
   </div>
   <div class="ba-wrap">
-    <div class="ba-card">
-      <div class="ba-video">
+
+    <div class="ba-row">
+      <div class="ba-media">
+        <span class="ba-badge">Before &rarr; After</span>
         <video class="baVideo" src="b-a-01.mp4" poster="b-a-01-poster.jpg" muted loop playsinline preload="metadata"></video>
       </div>
-      <div class="ba-meta">
-        <h3>Resin-Bound Driveway Transformation</h3>
-        <p>An aged, weathered drive stripped back and finished in a smooth resin-bound surface — UV-stable, weed-free and built to last, completed start to finish by the Stoneway team.</p>
+      <div class="ba-copy">
+        <div class="ba-eyebrow">Resin Bound Driveway</div>
+        <h3>A tired old drive made smooth again</h3>
+        <p>This weathered, cracked driveway was stripped right back and rebuilt from the base up, then finished in a smooth resin bound surface. It is UV stable, weed free and permeable, so water drains away rather than pooling — a clean, hard wearing finish that lifts the whole front of the property.</p>
+        <div class="ba-loc"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>[Add location]</div>
       </div>
     </div>
-    <div class="ba-card">
-      <div class="ba-video">
+
+    <div class="ba-row">
+      <div class="ba-media">
+        <span class="ba-badge">Before &rarr; After</span>
         <video class="baVideo" src="b-a-02.mp4" poster="b-a-02-poster.jpg" muted loop playsinline preload="metadata"></video>
       </div>
-      <div class="ba-meta">
-        <h3>Block Paving Driveway Makeover</h3>
-        <p>A worn, uneven surface lifted and relaid with crisp new block paving — a clean, durable finish that lifts the whole front of the property, laid and pointed by the Stoneway team.</p>
+      <div class="ba-copy">
+        <div class="ba-eyebrow">Block Paving</div>
+        <h3>From worn and uneven to crisp block paving</h3>
+        <p>An old, sunken surface lifted out and relaid with new block paving over a properly compacted sub base. Every edge was haunched in and the joints kiln dried sanded, giving a level, durable drive that will stay put under daily use for years to come.</p>
+        <div class="ba-loc"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>[Add location]</div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -423,10 +453,22 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
   <div class="wrap center">
     <span class="eyebrow"><svg class="glyph" viewBox="0 0 26 18"><rect x="0" y="0" width="11" height="8"/><rect x="14" y="0" width="11" height="8"/><rect x="0" y="11" width="11" height="7"/><rect x="14" y="11" width="11" height="7"/></svg> Customer reviews</span>
     <h2 class="title">What Our Customers Say</h2>
+    <div class="rev-summary">
+      <span class="rev-gmark">G</span>
+      <div class="rev-score-wrap">
+        <span class="rev-score">[0.0]</span>
+        <span class="rev-sum-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <div class="rev-sum-meta">Based on [X]<br>Google reviews</div>
+    </div>
   </div>
   <div class="rev-stage">
     <div class="rev-track" id="revTrack"></div>
+  </div>
+  <div class="rev-nav">
+    <button class="rev-arrow" id="revPrev" aria-label="Previous reviews"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
     <div class="rev-dots" id="revDots"></div>
+    <button class="rev-arrow" id="revNext" aria-label="Next reviews"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
   </div>
 </section>
 
@@ -443,7 +485,7 @@ h2.title{font-size:clamp(30px,4.6vw,50px);font-weight:700;text-transform:upperca
       <p class="lead">Whether it is a small front path or a full commercial scheme, our focus is the same: solid preparation, premium materials and a finish that lasts.</p>
       <div class="owner">
         <div class="owner-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
-        <div><b>[Owner name]</b><span>Founder, Stoneway Paving and Resin Driveways Ltd</span></div>
+        <div><b>James</b><span>Founder, Stoneway Paving and Resin Driveways Ltd</span></div>
       </div>
     </div>
   </div>
@@ -605,34 +647,54 @@ if(baVideos.length){
   baVideos.forEach(v=>baObs.observe(v));
 }
 
-// reviews (placeholder Google-style cards)
+// reviews (placeholder Google-style cards, 3-up auto slider)
 const REVIEWS=[
-  {n:'[Reviewer name]',t:'Replace with a real Google review. Stoneway transformed our front driveway with resin and it looks fantastic. Tidy, on time and great communication throughout.',c:'S'},
-  {n:'[Reviewer name]',t:'Replace with a real Google review. Excellent block paving job, the team were professional and left everything spotless. Would highly recommend.',c:'J'},
-  {n:'[Reviewer name]',t:'Replace with a real Google review. From the quote to the finished patio the whole process was smooth. Really pleased with the quality of work.',c:'M'},
-  {n:'[Reviewer name]',t:'Replace with a real Google review. Great value and a brilliant finish on our new tarmac drive. Friendly local company that does what they say.',c:'L'}
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'S',t:'Replace with a real Google review. Stoneway transformed our front driveway with resin and it looks fantastic. Tidy, on time and great communication throughout.'},
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'J',t:'Replace with a real Google review. Excellent block paving job, the team were professional and left everything spotless. Would highly recommend.'},
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'M',t:'Replace with a real Google review. From the quote to the finished patio the whole process was smooth. Really pleased with the quality of work.'},
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'L',t:'Replace with a real Google review. Great value and a brilliant finish on our new tarmac drive. Friendly local company that does what they say.'},
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'R',t:'Replace with a real Google review. Cleaned and resealed our old block paving and it looks like new again. Fair price and no mess left behind.'},
+  {n:'[Reviewer name]',w:'[x] months ago',l:'[Location]',c:'A',t:'Replace with a real Google review. Prompt quote, clear timescales and the finished driveway is exactly what we wanted. Would use Stoneway again.'}
 ];
+const PIN='<svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>';
 const track=document.getElementById('revTrack'),rDots=document.getElementById('revDots');
-REVIEWS.forEach((r,i)=>{
+REVIEWS.forEach(r=>{
   const card=document.createElement('div');card.className='rev-card';
   card.innerHTML=`<div class="rev-inner">
-    <div class="rev-top">
-      <div class="g-logo"><span class="g"><i style="color:#4285F4">G</i><i style="color:#EA4335">o</i><i style="color:#FBBC05">o</i><i style="color:#4285F4">g</i><i style="color:#34A853">l</i><i style="color:#EA4335">e</i></span> Review</div>
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="rev-head">
+      <div class="rev-av">${r.c}</div>
+      <div class="rev-id"><b>${r.n}</b><span>${r.w}</span></div>
+      <div class="rev-g">G</div>
     </div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
     <div class="rev-text">${r.t}</div>
-    <div class="rev-who"><div class="rev-av">${r.c}</div><div><b>${r.n}</b><span>Posted on Google</span></div></div>
+    <div class="rev-loc">${PIN}${r.l}</div>
   </div>`;
   track.appendChild(card);
-  const d=document.createElement('button');if(i===0)d.className='on';d.onclick=()=>revGo(i);rDots.appendChild(d);
 });
-let ri=0;
-function revGo(i){ri=i;track.style.transform=`translateX(-${i*100}%)`;[...rDots.children].forEach((d,j)=>d.classList.toggle('on',j===i));}
-let revTimer=setInterval(()=>revGo((ri+1)%REVIEWS.length),5000);
+const stage=document.querySelector('.rev-stage');
+let ri=0,rVis=3,rMax=Math.max(0,REVIEWS.length-rVis);
+// how many cards actually fit — measured from the DOM, not guessed from innerWidth
+function revMeasure(){const c=track.children[0];if(!c)return rVis;const w=c.getBoundingClientRect().width;
+  if(!w||!track.clientWidth)return rVis;return Math.max(1,Math.min(REVIEWS.length,Math.round(track.clientWidth/w)));}
+function revBuildDots(){rDots.innerHTML='';for(let i=0;i<=rMax;i++){const d=document.createElement('button');if(i===ri)d.className='on';d.onclick=()=>{revGo(i);revRestart();};rDots.appendChild(d);}}
+// re-measure before every move, so the slider self-corrects even if no resize event fires
+function revFit(){const v=revMeasure();if(v===rVis&&rDots.children.length===rMax+1)return;
+  rVis=v;rMax=Math.max(0,REVIEWS.length-rVis);ri=Math.min(ri,rMax);revBuildDots();}
+function revGo(i){revFit();ri=Math.max(0,Math.min(rMax,i));track.style.transform=`translateX(-${ri*(100/rVis)}%)`;[...rDots.children].forEach((d,j)=>d.classList.toggle('on',j===ri));}
+function revNext(){revFit();revGo(ri>=rMax?0:ri+1);}
+function revPrev(){revFit();revGo(ri<=0?rMax:ri-1);}
+function revSync(){revGo(ri);}
+revGo(0);
+let revTimer=setInterval(revNext,4500);
+function revRestart(){clearInterval(revTimer);revTimer=setInterval(revNext,4500);}
+document.getElementById('revPrev').onclick=()=>{revPrev();revRestart();};
+document.getElementById('revNext').onclick=()=>{revNext();revRestart();};
+const revRO=window.ResizeObserver?new ResizeObserver(revSync):null;if(revRO)revRO.observe(stage);
+addEventListener('resize',revSync);addEventListener('load',revSync);
 // swipe
-let sx=0;const stage=document.querySelector('.rev-stage');
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;clearInterval(revTimer);},{passive:true});
-stage.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(dx<-40)revGo((ri+1)%REVIEWS.length);if(dx>40)revGo((ri-1+REVIEWS.length)%REVIEWS.length);revTimer=setInterval(()=>revGo((ri+1)%REVIEWS.length),5000);},{passive:true});
+stage.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(dx<-40)revNext();if(dx>40)revPrev();revRestart();},{passive:true});
 
 // lightbox
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
